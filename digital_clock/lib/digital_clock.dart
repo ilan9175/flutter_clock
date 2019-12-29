@@ -116,35 +116,42 @@ class _DigitalClockState extends State<DigitalClock> {
         ),
       ] : [],
     );
+    final weather = widget.model.weatherCondition;
 
     return Container(
       color: colors[_Element.background],
-      child: Center(
-        child: Column(
-          children: <Widget>[
-            DefaultTextStyle(
-              style: defaultStyle,
-              child: Container(alignment: Alignment.topCenter,child: Text(hour +':'+ minute)),
+      child: Column(
+        children: <Widget>[
+          DefaultTextStyle(
+            style: defaultStyle,
+            child: Container(child: Text(hour +':'+ minute)),
+          ),
+          DefaultTextStyle(
+            style: TextStyle(
+              color: colors[_Element.text],
+              fontFamily: 'Argentum',
+              fontWeight: FontWeight.bold,
+              fontSize: MediaQuery.of(context).size.width / 20,
             ),
-            DefaultTextStyle(
-              style: TextStyle(
-                color: colors[_Element.text],
-                fontFamily: 'Argentum',
-                fontWeight: FontWeight.bold,
-                fontSize: MediaQuery.of(context).size.width / 20,
-              ),
-              child: Container(alignment: Alignment.topCenter,child: Text(date)),
+            child: Container(child: Text(date)),
+          ),
+          DefaultTextStyle(
+            style: TextStyle(
+              color: colors[_Element.text],
+              fontFamily: 'Argentum',
+              fontSize: MediaQuery.of(context).size.width / 30,
             ),
-            DefaultTextStyle(
-              style: TextStyle(
-                color: colors[_Element.text],
-                fontFamily: 'Argentum',
-                fontSize: MediaQuery.of(context).size.width / 30,
-              ),
-              child: Container(alignment: Alignment.topCenter,child: Text(city)),
-            ),
-          ],
-        ),
+            child: Container(child: Text(city)),
+          ),
+          SizedBox(height: 10),
+          weather == WeatherCondition.sunny ? Icon(Icons.wb_sunny, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+          weather == WeatherCondition.foggy ? Icon(Icons.android, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+          weather == WeatherCondition.rainy ? Icon(Icons.add, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+          weather == WeatherCondition.cloudy ? Icon(Icons.ac_unit, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+          weather == WeatherCondition.snowy ? Icon(Icons.access_alarm, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+          weather == WeatherCondition.thunderstorm ? Icon(Icons.access_alarms, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+          Icon(Icons.vertical_align_bottom, size: MediaQuery.of(context).size.width / 15, color: Colors.white,)
+        ],
       ),
     );
   }

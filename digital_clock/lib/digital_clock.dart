@@ -4,6 +4,8 @@
 
 import 'dart:async';
 
+import 'package:digital_clock/sunset_sunrise.dart';
+import 'package:digital_clock/weather.dart';
 import 'package:flutter_clock_helper/model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -92,6 +94,16 @@ class _DigitalClockState extends State<DigitalClock> {
     });
   }
 
+  Icon findIcon(WeatherCondition weatherCondition) {
+    return weatherCondition == WeatherCondition.sunny ? Icon(Icons.wb_sunny, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    weatherCondition == WeatherCondition.foggy ? Icon(Icons.android, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    weatherCondition == WeatherCondition.rainy ? Icon(Icons.add, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    weatherCondition == WeatherCondition.cloudy ? Icon(Icons.ac_unit, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    weatherCondition == WeatherCondition.snowy ? Icon(Icons.access_alarm, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    weatherCondition == WeatherCondition.thunderstorm ? Icon(Icons.access_alarms, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    Icon(Icons.vertical_align_bottom, size: MediaQuery.of(context).size.width / 15, color: Colors.white,);
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).brightness == Brightness.light
@@ -146,47 +158,12 @@ class _DigitalClockState extends State<DigitalClock> {
             child: Container(child: Text(city)),
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(15, 5, 0, 0),
+            padding: EdgeInsets.fromLTRB(15, 5, 15, 0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                //TODO methode a appeler pour afficher le bon icon plutot que de laisser tous ces if ici
-                weather == WeatherCondition.sunny ? Icon(Icons.wb_sunny, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-                weather == WeatherCondition.foggy ? Icon(Icons.android, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-                weather == WeatherCondition.rainy ? Icon(Icons.add, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-                weather == WeatherCondition.cloudy ? Icon(Icons.ac_unit, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-                weather == WeatherCondition.snowy ? Icon(Icons.access_alarm, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-                weather == WeatherCondition.thunderstorm ? Icon(Icons.access_alarms, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-                Icon(Icons.vertical_align_bottom, size: MediaQuery.of(context).size.width / 15, color: Colors.white,),
-                SizedBox(width: 10,),
-                Column(
-                  children: <Widget>[
-                    DefaultTextStyle(
-                      style: TextStyle(
-                        color: colors[_Element.text],
-                        fontFamily: 'Argentum',
-                        fontWeight: FontWeight.bold,
-                        fontSize: MediaQuery.of(context).size.width / 30,
-                      ),
-                      child: Text(temp),
-                    ),
-                    DefaultTextStyle(
-                      style: TextStyle(
-                        color: colors[_Element.text],
-                        fontFamily: 'Argentum',
-                        fontSize: MediaQuery.of(context).size.width / 45,
-                      ),
-                      child: Text('Min: ' + lowTemp),
-                    ),
-                    DefaultTextStyle(
-                      style: TextStyle(
-                        color: colors[_Element.text],
-                        fontFamily: 'Argentum',
-                        fontSize: MediaQuery.of(context).size.width / 45,
-                      ),
-                      child: Text('Max: ' + highTemp),
-                    ),
-                  ],
-                ),
+                Weather(findIcon(weather), temp, lowTemp, highTemp),
+                SunsetSunrise(),
               ],
             ),
           ),

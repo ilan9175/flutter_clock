@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Weather extends StatefulWidget {
+class Weather extends StatelessWidget {
 
   final Icon iconWeather;
   final String temp;
@@ -8,24 +8,6 @@ class Weather extends StatefulWidget {
   final String highTemp;
 
   Weather(this.iconWeather, this.temp, this.lowTemp, this.highTemp);
-
-  @override
-  WeatherState createState() => WeatherState(this.iconWeather, this.temp, this.lowTemp, this.highTemp);
-}
-
-class WeatherState extends State<Weather> {
-  final Icon iconWeather;
-  final String temp;
-  final String lowTemp;
-  final String highTemp;
-
-
-  WeatherState(this.iconWeather, this.temp, this.lowTemp, this.highTemp);
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
 
   @override

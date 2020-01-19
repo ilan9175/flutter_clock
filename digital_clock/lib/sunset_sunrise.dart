@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SunsetSunrise extends StatefulWidget {
-
-  SunsetSunrise();
-
-  @override
-  SunsetSunriseState createState() => SunsetSunriseState();
-}
-
-class SunsetSunriseState extends State<SunsetSunrise> {
-
-
-  SunsetSunriseState();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class SunsetSunrise extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

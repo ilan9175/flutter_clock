@@ -4,6 +4,7 @@
 
 import 'dart:async';
 
+import 'package:digital_clock/presentation/weather_icons_icons.dart';
 import 'package:digital_clock/sunset_sunrise.dart';
 import 'package:digital_clock/weather.dart';
 import 'package:flutter_clock_helper/model.dart';
@@ -96,12 +97,12 @@ class _DigitalClockState extends State<DigitalClock> {
 
   Icon findIcon(WeatherCondition weatherCondition) {
     return weatherCondition == WeatherCondition.sunny ? Icon(Icons.wb_sunny, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.foggy ? Icon(Icons.android, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.rainy ? Icon(Icons.add, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.cloudy ? Icon(Icons.ac_unit, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.snowy ? Icon(Icons.access_alarm, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.thunderstorm ? Icon(Icons.access_alarms, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    Icon(Icons.vertical_align_bottom, size: MediaQuery.of(context).size.width / 15, color: Colors.white,);
+    weatherCondition == WeatherCondition.foggy ? Icon(WeatherIcons.fog_cloud, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    weatherCondition == WeatherCondition.rainy ? Icon(WeatherIcons.hail_inv, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    weatherCondition == WeatherCondition.cloudy ? Icon(Icons.wb_cloudy, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    weatherCondition == WeatherCondition.snowy ? Icon(WeatherIcons.snow_heavy, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    weatherCondition == WeatherCondition.thunderstorm ? Icon(WeatherIcons.cloud_flash, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
+    Icon(WeatherIcons.windy, size: MediaQuery.of(context).size.width / 15, color: Colors.white,);
   }
 
   @override

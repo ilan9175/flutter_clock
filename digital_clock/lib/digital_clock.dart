@@ -96,13 +96,47 @@ class _DigitalClockState extends State<DigitalClock> {
   }
 
   Icon findIcon(WeatherCondition weatherCondition) {
-    return weatherCondition == WeatherCondition.sunny ? Icon(Icons.wb_sunny, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.foggy ? Icon(WeatherIcons.fog_cloud, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.rainy ? Icon(WeatherIcons.hail_inv, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.cloudy ? Icon(Icons.wb_cloudy, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.snowy ? Icon(WeatherIcons.snow_heavy, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    weatherCondition == WeatherCondition.thunderstorm ? Icon(WeatherIcons.cloud_flash, size: MediaQuery.of(context).size.width / 15, color: Colors.white,) :
-    Icon(WeatherIcons.windy, size: MediaQuery.of(context).size.width / 15, color: Colors.white,);
+    return weatherCondition == WeatherCondition.sunny
+        ? Icon(
+            Icons.wb_sunny,
+            size: MediaQuery.of(context).size.width / 15,
+            color: Colors.white,
+          )
+        : weatherCondition == WeatherCondition.foggy
+            ? Icon(
+                WeatherIcons.fog_cloud,
+                size: MediaQuery.of(context).size.width / 15,
+                color: Colors.white,
+              )
+            : weatherCondition == WeatherCondition.rainy
+                ? Icon(
+                    WeatherIcons.hail_inv,
+                    size: MediaQuery.of(context).size.width / 15,
+                    color: Colors.white,
+                  )
+                : weatherCondition == WeatherCondition.cloudy
+                    ? Icon(
+                        Icons.wb_cloudy,
+                        size: MediaQuery.of(context).size.width / 15,
+                        color: Colors.white,
+                      )
+                    : weatherCondition == WeatherCondition.snowy
+                        ? Icon(
+                            WeatherIcons.snow_heavy,
+                            size: MediaQuery.of(context).size.width / 15,
+                            color: Colors.white,
+                          )
+                        : weatherCondition == WeatherCondition.thunderstorm
+                            ? Icon(
+                                WeatherIcons.cloud_flash,
+                                size: MediaQuery.of(context).size.width / 15,
+                                color: Colors.white,
+                              )
+                            : Icon(
+                                WeatherIcons.windy,
+                                size: MediaQuery.of(context).size.width / 15,
+                                color: Colors.white,
+                              );
   }
 
   @override
@@ -111,7 +145,7 @@ class _DigitalClockState extends State<DigitalClock> {
         ? _lightTheme
         : _darkTheme;
     final hour =
-    DateFormat(widget.model.is24HourFormat ? 'HH' : 'hh').format(_dateTime);
+        DateFormat(widget.model.is24HourFormat ? 'HH' : 'hh').format(_dateTime);
     final minute = DateFormat('mm').format(_dateTime);
     final date = DateFormat('yyyy, MMM dd').format(_dateTime);
     final city = widget.model.location;
@@ -120,13 +154,15 @@ class _DigitalClockState extends State<DigitalClock> {
       color: colors[_Element.text],
       fontFamily: 'HangedLetters',
       fontSize: fontSize,
-      shadows: Theme.of(context).brightness == Brightness.light ? [
-        Shadow(
-          blurRadius: 0,
-          color: colors[_Element.shadow],
-          offset: Offset(5, 0),
-        ),
-      ] : [],
+      shadows: Theme.of(context).brightness == Brightness.light
+          ? [
+              Shadow(
+                blurRadius: 0,
+                color: colors[_Element.shadow],
+                offset: Offset(5, 0),
+              ),
+            ]
+          : [],
     );
     final weather = widget.model.weatherCondition;
     final temp = widget.model.temperatureString;
@@ -139,7 +175,7 @@ class _DigitalClockState extends State<DigitalClock> {
         children: <Widget>[
           DefaultTextStyle(
             style: defaultStyle,
-            child: Container(child: Text(hour +':'+ minute)),
+            child: Container(child: Text(hour + ':' + minute)),
           ),
           DefaultTextStyle(
             style: TextStyle(

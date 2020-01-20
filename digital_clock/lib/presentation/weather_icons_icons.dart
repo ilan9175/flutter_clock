@@ -11,7 +11,7 @@
 ///      fonts:
 ///       - asset: fonts/WeatherIcons.ttf
 ///
-/// 
+///
 /// * Material Design Icons, Copyright (C) Google, Inc
 ///         Author:    Google
 ///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
@@ -28,11 +28,16 @@ class WeatherIcons {
 
   static const _kFontFam = 'WeatherIcons';
 
-  static const IconData attach_file = const IconData(0xe800, fontFamily: _kFontFam);
-  static const IconData snow_heavy = const IconData(0xe801, fontFamily: _kFontFam);
-  static const IconData fog_cloud = const IconData(0xe802, fontFamily: _kFontFam);
-  static const IconData hail_inv = const IconData(0xe803, fontFamily: _kFontFam);
+  static const IconData attach_file =
+      const IconData(0xe800, fontFamily: _kFontFam);
+  static const IconData snow_heavy =
+      const IconData(0xe801, fontFamily: _kFontFam);
+  static const IconData fog_cloud =
+      const IconData(0xe802, fontFamily: _kFontFam);
+  static const IconData hail_inv =
+      const IconData(0xe803, fontFamily: _kFontFam);
   static const IconData hail = const IconData(0xe804, fontFamily: _kFontFam);
-  static const IconData cloud_flash = const IconData(0xe805, fontFamily: _kFontFam);
+  static const IconData cloud_flash =
+      const IconData(0xe805, fontFamily: _kFontFam);
   static const IconData windy = const IconData(0xe806, fontFamily: _kFontFam);
 }
